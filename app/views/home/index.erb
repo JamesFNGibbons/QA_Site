@@ -1,0 +1,39 @@
+<div class='container'>
+  <% if(!@mobile_mode) %>
+    <div class='jumbotron'>
+      <h1>Answer Questions</h1>
+      <p>Ask and answer.</p>
+      <a href='ask' class='btn btn-primary btn-lg'>
+        Ask The Community Anything
+      </a>
+    </div>
+  <% end %>
+  <% if(@no_questions) %>
+    <h1 class='text-center'>
+      No Questions Where Found.
+    </h1>
+    <%
+      else
+      print '<div class="row">'
+      #Loop through the active questions
+      @questions.each do |question|
+    %>
+      <div class='col-md-4'>
+        <div class='panel panel-default'>
+          <div class='panel-heading'>
+            <%= question['question'] %>
+          </div>
+          <div class='panel-body'>
+            <form>
+            <textarea placeholder='Answer Question ...' class='form-control'></textarea>
+            <br>
+            <button class='btn btn-primary pull-right btn-sm'>
+              Answer Question
+            </button>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <% end %>
+</div>
